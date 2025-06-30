@@ -6,7 +6,7 @@ require('dotenv').config();
 console.log('Starting server setup...');
 
 const app = express();
-const port = process.env.PORT || 3601;
+const port = process.env.PORT || 3667;
 const host = '0.0.0.0'; // Bind to all interfaces
 
 // Database connection pool
@@ -46,11 +46,11 @@ const corsOptions = {
     origin: [
         'http://127.0.0.1:5503',
         'http://localhost:5503',
-        'http://3.88.203.125:3601',
-        'http://3.88.203.125:7102', // HR Notification Portal
-        'http://3.88.203.125:7103', // Employee Notification Portal
-        'http://localhost:7102',
-        'http://localhost:7103',
+        'http://13.60.88.243:3667',
+        'http://13.60.88.243:8120', // HR Notification Portal
+        'http://13.60.88.243:8121', // Employee Notification Portal
+        'http://localhost:8120',
+        'http://localhost:8121',
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
@@ -162,7 +162,7 @@ async function startServer() {
         client.release();
         await createTables();
         app.listen(port, host, () => {
-            console.log(`Server running on http://${host}:${port} (accessible at http://3.88.203.125:${port})`);
+            console.log(`Server running on http://${host}:${port} (accessible at http://13.60.88.243:${port})`);
         });
     } catch (error) {
         console.error('Error starting server:', error.message, error.stack);
